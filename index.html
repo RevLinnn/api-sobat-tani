@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Firebase Auth Example</title>
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
+        import {
+            getAuth,
+            signInWithEmailAndPassword,
+            signInWithPopup,
+            GoogleAuthProvider,
+        } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-auth.js";
+
+        // Your web app's Firebase configuration
+        // const firebaseConfig = {
+        //     apiKey: "AIzaSyBi4xhMRx2sFswLzlzvUpbpufxNjIPAa4s",
+        //     authDomain: "sobat-tani-424709.firebaseapp.com",
+        //     projectId: "sobat-tani-424709",
+        //     storageBucket: "sobat-tani-424709.appspot.com",
+        //     messagingSenderId: "847373629225",
+        //     appId: "1:847373629225:web:703fff559c6a3c6304a938",
+        //     measurementId: "G-Q1W5XDD4QH"
+        // };
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDteyE_BRQQvjon1Cb0nGJwJsemPYumZf8",
+            authDomain: "sobat-tani-project-425607.firebaseapp.com",
+            projectId: "sobat-tani-project-425607",
+            storageBucket: "sobat-tani-project-425607.appspot.com",
+            messagingSenderId: "508666560341",
+            appId: "1:508666560341:web:991ad3a0a64b9cdd84f9dc",
+            measurementId: "G-DP3BP1RQN8"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const googleProvider = new GoogleAuthProvider();
+
+        // Sign in with email/password function
+        async function signInWithEmailPassword() {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            try {
+                const userCredential = await signInWithEmailAndPassword(
+                    auth,
+                    email,
+                    password
+                );
+                const idToken = await userCredential.user.getIdToken();
+                console.log("ID Token:", idToken);
+                // alert('ID Token: ' + idToken);
+            } catch (error) {
+                console.error("Error signing in with email/password:", error);
+                alert("Error signing in with email/password: " + error.message);
+            }
+        }
+
+        // Sign in with Google function
+        async function signInWithGoogle() {
+            try {
+                const userCredential = await signInWithPopup(auth, googleProvider);
+                const idToken = await userCredential.user.getIdToken();
+                console.log("ID Token:", idToken);
+                alert("ID Token: " + idToken);
+            } catch (error) {
+                console.error("Error signing in with Google:", error);
+                alert("Error signing in with Google: " + error.message);
+            }
+        }
+
+        // Attach signIn functions to the window object
+        window.signInWithEmailPassword = signInWithEmailPassword;
+        window.signInWithGoogle = signInWithGoogle;
+
+
+        //
+        // const oauth2Client = new google.auth.OAuth2();
+
+        // async function signInWithGoogle() {
+        //     try {
+        //         // Lakukan proses otentikasi dengan Google
+        //         // Di sini Anda perlu memperoleh ID Token dari hasil autentikasi
+        //         const idToken = "ID_TOKEN_YANG_DITERIMA"; // Ganti dengan ID Token yang diterima dari proses autentikasi dengan Google
+
+        //         // Selanjutnya, Anda dapat menggunakan ID Token untuk mengautentikasi dengan Firebase Authentication
+        //         const decodedToken = await admin.auth().verifyIdToken(idToken);
+
+        //         // Lakukan tindakan apa pun yang Anda inginkan setelah berhasil mengautentikasi pengguna dengan Google
+        //         console.log("User:", decodedToken);
+        //         alert("User: " + JSON.stringify(decodedToken));
+        //     } catch (error) {
+        //         console.error("Error signing in with Google:", error);
+        //         alert("Error signing in with Google: " + error.message);
+        //     }
+        // }
+    </script>
+</head>
+
+<body>
+    <h1>Firebase Auth Example</h1>
+    <input type="email" id="email" placeholder="Email" />
+    <input type="password" id="password" placeholder="Password" />
+    <button onclick="signInWithEmailPassword()">
+        Sign In with Email/Password
+    </button>
+    <button onclick="signInWithGoogle()">Sign In with Google</button>
+</body>
+
+</html>
