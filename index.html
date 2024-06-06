@@ -13,16 +13,6 @@
             GoogleAuthProvider,
         } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-auth.js";
 
-        // Your web app's Firebase configuration
-        // const firebaseConfig = {
-        //     apiKey: "AIzaSyBi4xhMRx2sFswLzlzvUpbpufxNjIPAa4s",
-        //     authDomain: "sobat-tani-424709.firebaseapp.com",
-        //     projectId: "sobat-tani-424709",
-        //     storageBucket: "sobat-tani-424709.appspot.com",
-        //     messagingSenderId: "847373629225",
-        //     appId: "1:847373629225:web:703fff559c6a3c6304a938",
-        //     measurementId: "G-Q1W5XDD4QH"
-        // };
 
         const firebaseConfig = {
             apiKey: "AIzaSyDteyE_BRQQvjon1Cb0nGJwJsemPYumZf8",
@@ -75,27 +65,6 @@
         window.signInWithEmailPassword = signInWithEmailPassword;
         window.signInWithGoogle = signInWithGoogle;
 
-
-        //
-        // const oauth2Client = new google.auth.OAuth2();
-
-        // async function signInWithGoogle() {
-        //     try {
-        //         // Lakukan proses otentikasi dengan Google
-        //         // Di sini Anda perlu memperoleh ID Token dari hasil autentikasi
-        //         const idToken = "ID_TOKEN_YANG_DITERIMA"; // Ganti dengan ID Token yang diterima dari proses autentikasi dengan Google
-
-        //         // Selanjutnya, Anda dapat menggunakan ID Token untuk mengautentikasi dengan Firebase Authentication
-        //         const decodedToken = await admin.auth().verifyIdToken(idToken);
-
-        //         // Lakukan tindakan apa pun yang Anda inginkan setelah berhasil mengautentikasi pengguna dengan Google
-        //         console.log("User:", decodedToken);
-        //         alert("User: " + JSON.stringify(decodedToken));
-        //     } catch (error) {
-        //         console.error("Error signing in with Google:", error);
-        //         alert("Error signing in with Google: " + error.message);
-        //     }
-        // }
     </script>
 </head>
 

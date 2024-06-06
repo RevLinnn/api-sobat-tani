@@ -5,13 +5,13 @@ const { verifyToken } = require('../middlewares/middleware.js');
 const { 
     register,
     login,
-    LoginWithGoogle,
+    loginWithGoogle,
     GetDetailUser
 } = require('../handler/auth-handler.js');
 
 router.post('/register', register);
 router.post('/login', login);
-router.post('/login-with-google', LoginWithGoogle);
+router.post('/login-with-google', loginWithGoogle);
 router.get('/user', verifyToken, GetDetailUser);
 
 //ubah profile (nama, password,) where email
