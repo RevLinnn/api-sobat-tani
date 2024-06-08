@@ -4,7 +4,9 @@ require('dotenv').config();
 const verifyToken = (req, res, next) => {
     let token = req.header("Authorization");
     if (!token) {
-        return res.status(401).send({ message: "Access denied" });
+        return res.status(401).send({
+            message: "Akese Ditolak!"
+        });
     }
     token = token.replace("Bearer ", "");
     try {
@@ -12,7 +14,9 @@ const verifyToken = (req, res, next) => {
         req.user = verified;
         next();
     } catch (err) {
-        res.status(400).send({ message: "Invalid token" });
+        res.status(400).send({
+            message: "Invalid token!"
+        });
     }
 };
 

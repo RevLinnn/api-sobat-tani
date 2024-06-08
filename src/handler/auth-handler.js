@@ -17,15 +17,13 @@ async function register(req, res) {
 
     if (!validateEmail(email)) {
         return res.status(400)
-            .json({ message: "The email address is improperly formatted." });
+            .json({ message: "Masukkan Email dengan benar" });
     }
-
     if (!name.trim()) {
-        return res.status(400).json({ message: "Name is required" });
+        return res.status(400).json({ message: "Masukkan Nama" });
     }
-
     if (!password) {
-        return res.status(400).json({ message: "Password is required" });
+        return res.status(400).json({ message: "Masukkan Password" });
     }
 
     try {
@@ -33,7 +31,7 @@ async function register(req, res) {
         // console.log(email);
         return res.status(400)
             .json({
-                message: "Email already registered"
+                message: "Email telah terdaftar"
             });
     } catch (error) {
         if (error.code === 'auth/user-not-found') {
@@ -73,7 +71,7 @@ async function login(req, res) {
 
     if (!validateEmail(email)) {
         return res.status(400)
-            .json({ message: "The email address is improperly formatted." });
+            .json({ message: "Masukkan Email dengan benar" });
     }
     if (!password) {
         return res.status(400).json({ message: "Password is required" });
@@ -85,15 +83,15 @@ async function login(req, res) {
         const userDoc = await admin.firestore().collection('users').doc(userId).get();
 
         if (!userDoc.exists) {
-            return res.status(400).json({ message: "Email not registered" });
+            return res.status(400).json({ message: "Email tidak terdaftar" });
         }
         const user = userDoc.data();
         if (user.isGoogleLogin) {
-            return res.status(400).json({ message: "Please login with Google" });
+            return res.status(400).json({ message: "Silahkan Login menggunakan akun Google" });
         }
         const isValidPassword = await bcrypt.compare(password, user.password);
         if (!isValidPassword) {
-            return res.status(400).json({ message: "Incorrect password" });
+            return res.status(400).json({ message: "Password salah" });
         }
 
         const token = jwt.sign(
@@ -108,12 +106,16 @@ async function login(req, res) {
             }
         );
         user.password = undefined;
-        return res.json({ user, token });
+        return res.json({
+            message: "Success",
+            data: user,
+            token
+        });
 
     } catch (error) {
         if (error.code === 'auth/user-not-found') {
             return res.status(400)
-                .json({ message: "Email not registered" });
+                .json({ message: "Email tidak terdaftar" });
         }
         console.error("Error logging in user: ", error);
         return res.status(500)
@@ -161,7 +163,11 @@ async function loginWithGoogle(req, res) {
                     expiresIn: '1d',
                 }
             );
-            return res.json({ user: userData, token });
+            return res.json({
+                message: "Success",
+                data: userData,
+                token
+            });
             // console.log(userData);
         }
     } catch (error) {
@@ -171,33 +177,78 @@ async function loginWithGoogle(req, res) {
     }
 }
 
-async function GetDetailUser(req, res) {
+async function updateUser(req, res) {
     try {
-        const {
-            id,
-            name,
-            email
-        } = req.user;
+        const { email } = req.user;
+        const { name, password } = req.body;
+
+        if (!name.trim()) {
+            return res.status(400).json({ message: "Nama tidak boleh kosong!" });
+        }
+
+        const userQuerySnapshot = await admin.firestore().collection('users').where('email', '==', email).get();
+
+        if (userQuerySnapshot.empty) {
+            return res.status(400).json({ message: "Pengguna tidak ditemukan" });
+        }
+
+        const userId = userQuerySnapshot.docs[0].id;
+
+        let updatedFields = {};
+        if (name) {
+            updatedFields.name = name;
+        }
+        if (password) {
+            const hashedPassword = await bcrypt.hash(password, 10);
+            updatedFields.password = hashedPassword;
+        }
+
+        await admin.firestore().collection('users').doc(userId).update(updatedFields);
+
+        const updatedUserDoc = await admin.firestore().collection('users').doc(userId).get();
+        const updatedUserData = updatedUserDoc.data();
+
+        delete updatedUserData.password;
 
         return res.status(200)
             .json({
-                message: "success",
-                data: {
-                    id: id,
-                    name: name,
-                    email: email
-                }
+                message: "Success",
+                data: updatedUserData
             });
+    } catch (error) {
+        console.error("Error updating user:", error);
+        return res.status(500).json({ message: "Internal Server Error" });
+    }
+}
+
+async function GetDetailUser(req, res) {
+    try {
+        const { id } = req.user;
+        const userDoc = await admin.firestore().collection('users').doc(id).get();
+
+        if (!userDoc.exists) {
+            return res.status(404).json({
+                message: "Pengguna tidak ditemukan!"
+            });
+        }
+
+        const userData = userDoc.data();
+        delete userData.password;
+
+        return res.status(200).json({
+            message: "success",
+            data: userData
+        });
     } catch (error) {
         console.error("Error getting user profile:", error);
         return res.status(500).json({ message: "Internal Server Error" });
     }
 }
 
-
 module.exports = {
     register,
     login,
     loginWithGoogle,
+    updateUser,
     GetDetailUser
 };

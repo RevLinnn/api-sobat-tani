@@ -6,15 +6,14 @@ const {
     register,
     login,
     loginWithGoogle,
+    updateUser,
     GetDetailUser
 } = require('../handler/auth-handler.js');
 
 router.post('/register', register);
 router.post('/login', login);
 router.post('/login-with-google', loginWithGoogle);
+router.put('/user', verifyToken, updateUser);
 router.get('/user', verifyToken, GetDetailUser);
-
-//ubah profile (nama, password,) where email
-//forgot password
 
 module.exports = router;
