@@ -101,8 +101,6 @@ async function getBookmarkById(req, res) {
 
         // Mengubah timestamp Firestore menjadi objek Date
         const timestamp = bookmarkData.timestamp.toDate();
-
-        // Format tanggal dan waktu
         const formattedTimestamp = `${timestamp.getFullYear()}-${(timestamp.getMonth() + 1).toString().padStart(2, '0')}-${timestamp.getDate().toString().padStart(2, '0')} ${timestamp.getHours().toString().padStart(2, '0')}:${timestamp.getMinutes().toString().padStart(2, '0')}:${timestamp.getSeconds().toString().padStart(2, '0')}`;
 
         bookmarkData.timestamp = formattedTimestamp;
@@ -141,8 +139,8 @@ async function getAllBookmark(req, res) {
         const bookmark = [];
         snapshot.forEach(doc => {
             const data = doc.data();
-            const timestamp = data.timestamp.toDate(); // Mengubah timestamp Firestore menjadi objek Date
-            const formattedTimestamp = moment(timestamp).utcOffset('+0700').format('YYYY-MM-DD HH:mm:ss'); // Menyesuaikan zona waktu ke UTC+7 (Waktu Indonesia Barat)
+            const timestamp = data.timestamp.toDate(); 
+            const formattedTimestamp = moment(timestamp).utcOffset('+0700').format('YYYY-MM-DD HH:mm:ss'); 
             bookmark.push({
                 id: doc.id,
                 ...data,

@@ -11,11 +11,9 @@ const {
 
 } = require('../handler/bookmark-handler.js');
 
-//bookmark
-router.post('/add',verifyToken,upload.single('image'), addBookmark);
-// router.patch('/bookmark/:id',verifyToken, addBookmark);
-router.get('/get/:id',verifyToken, getBookmarkById);
-router.get('/get',verifyToken, getAllBookmark);
+router.post('/',verifyToken,upload.single('image'), addBookmark);
+router.get('/:id',verifyToken, getBookmarkById);
+router.get('/',verifyToken, getAllBookmark);
 router.delete('/delete/:id',verifyToken, deleteBookmarkById);
 
 

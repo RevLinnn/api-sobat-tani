@@ -10,9 +10,7 @@ const {
     deleteStatus,
 } = require('../handler/status-handler.js');
 
-//Status
 router.post('/',verifyToken,upload.single('image'), addStatus);
-// router.put('/miniklopedia/update/:id',verifyToken,upload.single('image'), updateMiniklopedia);
 router.get('/',verifyToken, getAllStatus);
 router.get('/:id',verifyToken, getStatusById);
 router.delete('/:id',verifyToken, deleteStatus);
