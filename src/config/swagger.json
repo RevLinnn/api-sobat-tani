@@ -1,0 +1,1851 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "API Backend App Sobat Tani (Auth User, Bookmark, Status, Detail Plant)",
+    "version": "1.0.0",
+    "title": "Dokumentasi API Sobat Tani",
+    "contact": {}
+  },
+  "tags": [
+    {
+      "name": "root"
+    },
+    {
+      "name": "User Auth"
+    },
+    {
+      "name": "Bookmark"
+    },
+    {
+      "name": "Status"
+    },
+    {
+      "name": "detail-plants"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "tags": [
+          "root"
+        ],
+        "summary": "root",
+        "description": "root",
+        "operationId": "root",
+        "produces": [
+          "text/plain"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "Alt-Svc": {
+                "type": "string"
+              },
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "Server": {
+                "type": "string"
+              },
+              "X-Cloud-Trace-Context": {
+                "type": "string"
+              },
+              "access-control-allow-origin": {
+                "type": "string"
+              },
+              "etag": {
+                "type": "string"
+              },
+              "x-powered-by": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "User Auth"
+        ],
+        "summary": "Login",
+        "description": "# Login\n\n**Description:** Logs in a user using email and password  \n  \n\n### Request\n\n- Method: `POST`\n    \n- URL: `/auth/login`\n    \n- Headers:\n    \n    - `Content-Type: application/json`",
+        "operationId": "login",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/body"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "Alt-Svc": {
+                "type": "string"
+              },
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "Server": {
+                "type": "string"
+              },
+              "X-Cloud-Trace-Context": {
+                "type": "string"
+              },
+              "access-control-allow-origin": {
+                "type": "string"
+              },
+              "etag": {
+                "type": "string"
+              },
+              "x-powered-by": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/inline_response_200"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "Alt-Svc": {
+                "type": "string"
+              },
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "Server": {
+                "type": "string"
+              },
+              "X-Cloud-Trace-Context": {
+                "type": "string"
+              },
+              "access-control-allow-origin": {
+                "type": "string"
+              },
+              "etag": {
+                "type": "string"
+              },
+              "x-powered-by": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/inline_response_400"
+            }
+          }
+        }
+      }
+    },
+    "/auth/login-with-google": {
+      "post": {
+        "tags": [
+          "User Auth"
+        ],
+        "summary": "Login Google",
+        "description": "# Login With Google\n\nLogs in a user using a Google ID token, returning a JWT token and user information\n\n### Request\n\n- Method: `POST`\n    \n- URL: `/auth/login-with-google`\n    \n- Headers:\n    \n    - `Content-Type: application/json`",
+        "operationId": "loginGoogle",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/body_1"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "Alt-Svc": {
+                "type": "string"
+              },
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "Server": {
+                "type": "string"
+              },
+              "X-Cloud-Trace-Context": {
+                "type": "string"
+              },
+              "access-control-allow-origin": {
+                "type": "string"
+              },
+              "etag": {
+                "type": "string"
+              },
+              "x-powered-by": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/inline_response_200_1"
+            }
+          },
+          "500": {
+            "description": "Bad Request",
+            "headers": {
+              "Alt-Svc": {
+                "type": "string"
+              },
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "Server": {
+                "type": "string"
+              },
+              "X-Cloud-Trace-Context": {
+                "type": "string"
+              },
+              "access-control-allow-origin": {
+                "type": "string"
+              },
+              "etag": {
+                "type": "string"
+              },
+              "x-powered-by": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/inline_response_500"
+            }
+          }
+        }
+      }
+    },
+    "/auth/register": {
+      "post": {
+        "tags": [
+          "User Auth"
+        ],
+        "summary": "Register",
+        "description": "## Register\n\nDescription: Registers a new user with email, name, and password.\n\n- Method: `POST`\n    \n- URL: `/register`\n    \n- Headers:\n    \n    - `Content-Type: application/json`",
+        "operationId": "register",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/body_2"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "Alt-Svc": {
+                "type": "string"
+              },
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "Server": {
+                "type": "string"
+              },
+              "X-Cloud-Trace-Context": {
+                "type": "string"
+              },
+              "access-control-allow-origin": {
+                "type": "string"
+              },
+              "etag": {
+                "type": "string"
+              },
+              "x-powered-by": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/inline_response_200_2"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "headers": {
+              "Alt-Svc": {
+                "type": "string"
+              },
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "Server": {
+                "type": "string"
+              },
+              "X-Cloud-Trace-Context": {
+                "type": "string"
+              },
+              "access-control-allow-origin": {
+                "type": "string"
+              },
+              "etag": {
+                "type": "string"
+              },
+              "x-powered-by": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/inline_response_400_1"
+            }
+          }
+        }
+      }
+    },
+    "/auth/user": {
+      "get": {
+        "tags": [
+          "User Auth"
+        ],
+        "summary": "Detail User",
+        "description": "# Get User Details\n\nRetrieves detailed information of the authenticated user\n\n### Request\n\n- Method: `GET`\n    \n- URL: `/auth/user`\n    \n- Headers:\n    \n    - `Authorization`: `Bearer`",
+        "operationId": "detailUser",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "Alt-Svc": {
+                "type": "string"
+              },
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "Server": {
+                "type": "string"
+              },
+              "X-Cloud-Trace-Context": {
+                "type": "string"
+              },
+              "access-control-allow-origin": {
+                "type": "string"
+              },
+              "etag": {
+                "type": "string"
+              },
+              "x-powered-by": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/inline_response_200_3"
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "User Auth"
+        ],
+        "summary": "updateUser",
+        "description": "# Update User Information\n\nUpdates the profile information of an authenticated user  \n\nRequest\n\n- Method: `PUT`\n    \n- URL: `/auth/user`\n    \n- Headers:\n    \n    - `Authorization`: `Bearer`",
+        "operationId": "updateuser",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "required": false,
+            "schema": {
+              "$ref": "#/definitions/body_3"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "Alt-Svc": {
+                "type": "string"
+              },
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "Server": {
+                "type": "string"
+              },
+              "X-Cloud-Trace-Context": {
+                "type": "string"
+              },
+              "access-control-allow-origin": {
+                "type": "string"
+              },
+              "etag": {
+                "type": "string"
+              },
+              "x-powered-by": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/inline_response_200_4"
+            }
+          }
+        }
+      }
+    },
+    "/bookmark": {
+      "get": {
+        "tags": [
+          "Bookmark"
+        ],
+        "summary": "GetAllBookmark",
+        "description": "# Get All Bookmarks\n\nRetrieves all bookmark entries for the authenticated user\n\nRequest\n\n- Method: `GET`\n    \n- URL: `/bookmark/`\n    \n- Headers:\n    \n    - `Authorization`: `Bearer`",
+        "operationId": "getallbookmark",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "Alt-Svc": {
+                "type": "string"
+              },
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "Server": {
+                "type": "string"
+              },
+              "X-Cloud-Trace-Context": {
+                "type": "string"
+              },
+              "access-control-allow-origin": {
+                "type": "string"
+              },
+              "etag": {
+                "type": "string"
+              },
+              "x-powered-by": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/inline_response_200_5"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Bookmark"
+        ],
+        "summary": "AddBookmark",
+        "description": "# Add Bookmark\n\nUploads an image and creates a bookmark entry for a plant disease\n\n### Request\n\n- Method: `POST`\n    \n- URL: `/bookmark`\n    \n- Headers:\n    \n    - `Authorization`: `Bearer`\n        \n    - `Content-Type : multipart/form-data`",
+        "operationId": "addbookmark",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "",
+            "in": "formData",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "image",
+            "in": "formData",
+            "required": false,
+            "type": "string",
+            "format": "binary"
+          },
+          {
+            "name": "jenis_penyakit",
+            "in": "formData",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "nama_tanaman",
+            "in": "formData",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "headers": {
+              "Alt-Svc": {
+                "type": "string"
+              },
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "Server": {
+                "type": "string"
+              },
+              "X-Cloud-Trace-Context": {
+                "type": "string"
+              },
+              "access-control-allow-origin": {
+                "type": "string"
+              },
+              "etag": {
+                "type": "string"
+              },
+              "x-powered-by": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/inline_response_201"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "Alt-Svc": {
+                "type": "string"
+              },
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "Server": {
+                "type": "string"
+              },
+              "X-Cloud-Trace-Context": {
+                "type": "string"
+              },
+              "access-control-allow-origin": {
+                "type": "string"
+              },
+              "etag": {
+                "type": "string"
+              },
+              "x-powered-by": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/inline_response_400_2"
+            }
+          }
+        }
+      }
+    },
+    "/bookmark/delete/{id}": {
+      "delete": {
+        "tags": [
+          "Bookmark"
+        ],
+        "summary": "deleteBookmark",
+        "description": "# Delete Bookmark By ID\n\nDeletes a specific bookmark entry by its ID\n\n### Request\n\n- Method: `DELETE`\n    \n- URL: `/bookmark/delete/:id`\n    \n- Headers:\n    \n    - `Authorization`: `Bearer`",
+        "operationId": "deletebookmark",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successs",
+            "headers": {
+              "Alt-Svc": {
+                "type": "string"
+              },
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "Server": {
+                "type": "string"
+              },
+              "X-Cloud-Trace-Context": {
+                "type": "string"
+              },
+              "access-control-allow-origin": {
+                "type": "string"
+              },
+              "etag": {
+                "type": "string"
+              },
+              "x-powered-by": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/inline_response_200_6"
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "headers": {
+              "Alt-Svc": {
+                "type": "string"
+              },
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "Server": {
+                "type": "string"
+              },
+              "X-Cloud-Trace-Context": {
+                "type": "string"
+              },
+              "access-control-allow-origin": {
+                "type": "string"
+              },
+              "etag": {
+                "type": "string"
+              },
+              "x-powered-by": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/inline_response_404"
+            }
+          }
+        }
+      }
+    },
+    "/bookmark/{id}": {
+      "get": {
+        "tags": [
+          "Bookmark"
+        ],
+        "summary": "GetBookmarkById",
+        "description": "# Get Bookmark By ID\n\n### Retrieves a specific bookmark entry by its ID  \n  \nRequest\n\n- Method: `GET`\n    \n- URL: `/bookmark/:id`\n    \n- Headers:\n    \n    - `Authorization`: `Bearer`",
+        "operationId": "getbookmarkbyid",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "Alt-Svc": {
+                "type": "string"
+              },
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "Server": {
+                "type": "string"
+              },
+              "X-Cloud-Trace-Context": {
+                "type": "string"
+              },
+              "access-control-allow-origin": {
+                "type": "string"
+              },
+              "etag": {
+                "type": "string"
+              },
+              "x-powered-by": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/inline_response_200_7"
+            }
+          },
+          "404": {
+            "description": "Bad Request",
+            "headers": {
+              "Alt-Svc": {
+                "type": "string"
+              },
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "Server": {
+                "type": "string"
+              },
+              "X-Cloud-Trace-Context": {
+                "type": "string"
+              },
+              "access-control-allow-origin": {
+                "type": "string"
+              },
+              "etag": {
+                "type": "string"
+              },
+              "x-powered-by": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/inline_response_404"
+            }
+          }
+        }
+      }
+    },
+    "/plant": {
+      "get": {
+        "tags": [
+          "detail-plants"
+        ],
+        "summary": "getDetailsPlant",
+        "description": "# Get Plant Details\n\nRetrieves details of a plant based on the provided name and disease type\n\n### Request\n\n- Method: `GET`\n    \n- URL: `/plant-detail`\n    \n- Headers:\n    \n    - `Authorization`: `Bearer`\n        \n\n### Query Parameters\n\n- `nama_tanaman`: (string) Name of the plant.\n    \n- `jenis_penyakit`: (string) Type of the disease.",
+        "operationId": "getdetailsplant",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "nama_tanaman",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "jenis_penyakit",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "Alt-Svc": {
+                "type": "string"
+              },
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "Server": {
+                "type": "string"
+              },
+              "X-Cloud-Trace-Context": {
+                "type": "string"
+              },
+              "access-control-allow-origin": {
+                "type": "string"
+              },
+              "etag": {
+                "type": "string"
+              },
+              "x-powered-by": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/inline_response_200_8"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "Alt-Svc": {
+                "type": "string"
+              },
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "Server": {
+                "type": "string"
+              },
+              "X-Cloud-Trace-Context": {
+                "type": "string"
+              },
+              "access-control-allow-origin": {
+                "type": "string"
+              },
+              "etag": {
+                "type": "string"
+              },
+              "x-powered-by": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/inline_response_400_3"
+            }
+          }
+        }
+      }
+    },
+    "/status": {
+      "get": {
+        "tags": [
+          "Status"
+        ],
+        "summary": "getAllStatus",
+        "description": "# Get All Statuses\n\nRetrieves all status entries\n\n### Request\n\n- Method: GET\n    \n- URL: `/status`\n    \n- Headers:\n    \n    - `Authorization`: `Bearer`",
+        "operationId": "getallstatus",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "Alt-Svc": {
+                "type": "string"
+              },
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "Server": {
+                "type": "string"
+              },
+              "X-Cloud-Trace-Context": {
+                "type": "string"
+              },
+              "access-control-allow-origin": {
+                "type": "string"
+              },
+              "etag": {
+                "type": "string"
+              },
+              "x-powered-by": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/inline_response_200_9"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Status"
+        ],
+        "summary": "addStatus",
+        "description": "# Add Status\n\nUploads an image and creates a status entry for a plant disease\n\n### Request\n\n- Method: POST\n    \n- URL: `/status`\n    \n- Headers:\n    \n    - `Authorization`: `Bearer`\n        \n    - `Content-Type : multipart/form-data`",
+        "operationId": "addstatus",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "image",
+            "in": "formData",
+            "required": false,
+            "type": "string",
+            "format": "binary"
+          },
+          {
+            "name": "jenis_penyakit",
+            "in": "formData",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "nama_tanaman",
+            "in": "formData",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Success",
+            "headers": {
+              "Alt-Svc": {
+                "type": "string"
+              },
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "Server": {
+                "type": "string"
+              },
+              "X-Cloud-Trace-Context": {
+                "type": "string"
+              },
+              "access-control-allow-origin": {
+                "type": "string"
+              },
+              "etag": {
+                "type": "string"
+              },
+              "x-powered-by": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/inline_response_201_1"
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "headers": {
+              "Alt-Svc": {
+                "type": "string"
+              },
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "Server": {
+                "type": "string"
+              },
+              "X-Cloud-Trace-Context": {
+                "type": "string"
+              },
+              "access-control-allow-origin": {
+                "type": "string"
+              },
+              "etag": {
+                "type": "string"
+              },
+              "x-powered-by": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/inline_response_400_4"
+            }
+          }
+        }
+      }
+    },
+    "/status/{id}": {
+      "get": {
+        "tags": [
+          "Status"
+        ],
+        "summary": "getStatusById",
+        "description": "# Get Status By ID\n\nRetreieves a specific status entry by its ID\n\n### Request\n\n- Method: GET\n    \n- URL: `/status/:id`\n    \n- Headers:\n    \n    - `Authorization`: `Bearer`",
+        "operationId": "getstatusbyid",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "Alt-Svc": {
+                "type": "string"
+              },
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "Server": {
+                "type": "string"
+              },
+              "X-Cloud-Trace-Context": {
+                "type": "string"
+              },
+              "access-control-allow-origin": {
+                "type": "string"
+              },
+              "etag": {
+                "type": "string"
+              },
+              "x-powered-by": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/inline_response_200_10"
+            }
+          },
+          "404": {
+            "description": "Bad request",
+            "headers": {
+              "Alt-Svc": {
+                "type": "string"
+              },
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "Server": {
+                "type": "string"
+              },
+              "X-Cloud-Trace-Context": {
+                "type": "string"
+              },
+              "access-control-allow-origin": {
+                "type": "string"
+              },
+              "etag": {
+                "type": "string"
+              },
+              "x-powered-by": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/inline_response_404_1"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Status"
+        ],
+        "summary": "deleteStatus",
+        "description": "# Delete Status\n\nDeletes a specific status entry by its ID, including the associated image\n\n### Request\n\n- Method: `DELETE`\n    \n- URL: `/status/:id`\n    \n- Headers:\n    \n    - `Authorization`: `Bearer`",
+        "operationId": "deletestatus",
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "Alt-Svc": {
+                "type": "string"
+              },
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "Server": {
+                "type": "string"
+              },
+              "X-Cloud-Trace-Context": {
+                "type": "string"
+              },
+              "access-control-allow-origin": {
+                "type": "string"
+              },
+              "etag": {
+                "type": "string"
+              },
+              "x-powered-by": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/inline_response_200_2"
+            }
+          },
+          "404": {
+            "description": "Bad request",
+            "headers": {
+              "Alt-Svc": {
+                "type": "string"
+              },
+              "Content-Length": {
+                "type": "string"
+              },
+              "Date": {
+                "type": "string"
+              },
+              "Server": {
+                "type": "string"
+              },
+              "X-Cloud-Trace-Context": {
+                "type": "string"
+              },
+              "access-control-allow-origin": {
+                "type": "string"
+              },
+              "etag": {
+                "type": "string"
+              },
+              "x-powered-by": {
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/inline_response_404_2"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "inline_response_400_4": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Masukkan gambar Tanaman!"
+        }
+      }
+    },
+    "inline_response_200_8_ciri_ciri": {
+      "type": "object",
+      "properties": {
+        "0": {
+          "type": "string",
+          "example": "Daun menguning dan menggulung."
+        },
+        "1": {
+          "type": "string",
+          "example": "Bercak coklat pada daun yang bisa menyebar ke batang."
+        },
+        "2": {
+          "type": "string",
+          "example": "Luka pada batang yang mengeluarkan lendir bakteri."
+        }
+      }
+    },
+    "inline_response_400_3": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Missing query parameters"
+        }
+      }
+    },
+    "inline_response_200_10": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/inline_response_200_9_data"
+        },
+        "message": {
+          "type": "string",
+          "example": "Success"
+        }
+      }
+    },
+    "inline_response_404_2": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Status not found"
+        }
+      }
+    },
+    "inline_response_404_1": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "status tidak ditemukan!"
+        }
+      }
+    },
+    "inline_response_200_5_data": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "bookmark-id"
+        },
+        "imageUrl": {
+          "type": "string",
+          "example": "https://storage.googleapis.com/sobat-tani-project-425607.appspot.com/bookmark-image/90733aed-a089-4778-8e97-94b666d754bf.jpg"
+        },
+        "jenis_penyakit": {
+          "type": "string",
+          "example": "jenis penyakit"
+        },
+        "nama_tanaman": {
+          "type": "string",
+          "example": "nama Tanaman 2"
+        },
+        "timestamp": {
+          "type": "string",
+          "example": "2024-06-13 16:19:29"
+        },
+        "userId": {
+          "type": "string",
+          "example": "user-id"
+        }
+      }
+    },
+    "inline_response_200_8_data": {
+      "type": "object",
+      "properties": {
+        "cara_pengobatan": {
+          "$ref": "#/definitions/inline_response_200_8_cara_pengobatan"
+        },
+        "cara_pengobatan_alami": {
+          "$ref": "#/definitions/inline_response_200_8_cara_pengobatan_alami"
+        },
+        "ciri_ciri": {
+          "$ref": "#/definitions/inline_response_200_8_ciri_ciri"
+        },
+        "deskripsi": {
+          "type": "string",
+          "example": "Penyakit hawar bakteri pada singkong disebabkan oleh bakteri Xanthomonas axonopodis pv. manihotis. Penyakit ini menyebabkan kerusakan pada daun, batang, dan akar singkong, mengakibatkan daun menguning dan menggulung, serta munculnya bercak-bercak coklat pada daun."
+        },
+        "id": {
+          "type": "string",
+          "example": "plants-id"
+        },
+        "jenis_penyakit": {
+          "type": "string",
+          "example": "Hawar Bakteri"
+        },
+        "nama_tanaman": {
+          "type": "string",
+          "example": "Singkong"
+        }
+      }
+    },
+    "body": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "sobattani1@gmail.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "securepassword01234"
+        }
+      }
+    },
+    "body_3": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "example": " C241-PS007new"
+        },
+        "password": {
+          "type": "string",
+          "example": "newsecurepassword01234"
+        }
+      }
+    },
+    "inline_response_200_1_data": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "Email@example.com"
+        },
+        "isGoogleLogin": {
+          "type": "boolean",
+          "example": true
+        },
+        "name": {
+          "type": "string",
+          "example": "Nama"
+        }
+      }
+    },
+    "inline_response_201_1_data": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "status-id"
+        },
+        "imageUrl": {
+          "type": "string",
+          "example": "https://storage.googleapis.com/sobat-tani-project-425607.appspot.com/status-image/63728d81-6d31-4fbe-ab48-039cdd5418d2.jpg"
+        },
+        "jenis_penyakit": {
+          "type": "string",
+          "example": "Mosaik"
+        },
+        "nama_tanaman": {
+          "type": "string",
+          "example": "Singkong"
+        },
+        "timestamp": {
+          "type": "object",
+          "properties": {}
+        },
+        "userId": {
+          "type": "string",
+          "example": "user-id"
+        }
+      }
+    },
+    "body_1": {
+      "type": "object",
+      "properties": {
+        "idToken": {
+          "type": "string",
+          "example": "your-example-key"
+        }
+      }
+    },
+    "body_2": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "sobattani1@gmail.com"
+        },
+        "name": {
+          "type": "string",
+          "example": " C241-PS007"
+        },
+        "password": {
+          "type": "string",
+          "example": "securepassword01234"
+        }
+      }
+    },
+    "inline_response_201": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/inline_response_201_data"
+        },
+        "message": {
+          "type": "string",
+          "example": "Succcess"
+        }
+      }
+    },
+    "inline_response_200": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/inline_response_200_data"
+        },
+        "message": {
+          "type": "string",
+          "example": "Success"
+        },
+        "token": {
+          "type": "string",
+          "example": "jwt-token"
+        }
+      }
+    },
+    "inline_response_500": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Internal server error"
+        }
+      }
+    },
+    "inline_response_400_2": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Gambar tidak ditemukan"
+        }
+      }
+    },
+    "inline_response_200_7_data": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "bookmark-id"
+        },
+        "imageUrl": {
+          "type": "string",
+          "example": "https://storage.googleapis.com/sobat-tani-project-425607.appspot.com/bookmark-image/c836a365-3f16-4ccc-9335-2657ede14c73.jpg"
+        },
+        "jenis_penyakit": {
+          "type": "string",
+          "example": "jenis penyakit"
+        },
+        "nama_tanaman": {
+          "type": "string",
+          "example": "nama Tanaman"
+        },
+        "timestamp": {
+          "type": "string",
+          "example": "2024-06-13 09:11:53"
+        },
+        "userId": {
+          "type": "string",
+          "example": "user-id"
+        }
+      }
+    },
+    "inline_response_400": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Password salah"
+        }
+      }
+    },
+    "inline_response_400_1": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Masukkan Email dengan benar"
+        }
+      }
+    },
+    "inline_response_200_9": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "example": [
+            {
+              "id": "status-id",
+              "imageUrl": "https://storage.googleapis.com/sobat-tani-project-425607.appspot.com/status-image/0c5c5013-129a-45fb-a863-f65707693297.jpg",
+              "jenis_penyakit": "Berikan tanaman nutrisi yang cukup untuk meningkatkan sistem kekebalan tanaman terhadap penyakit. Namun, hindari pemupukan yang berlebihan karena dapat membuat tanaman lebih rentan terhadap serangan penyakit.",
+              "nama_tanaman": "Rekomendasi obat Penyakit Garis-Garis Coklat (Brown Streak Disease)",
+              "timestamp": "2024-06-08 17:34:03",
+              "userId": "user-id"
+            },
+            {
+              "id": "status-id",
+              "imageUrl": "https://storage.googleapis.com/sobat-tani-project-425607.appspot.com/status-image/63728d81-6d31-4fbe-ab48-039cdd5418d2.jpg",
+              "jenis_penyakit": "Mosaik",
+              "nama_tanaman": "Singkong",
+              "timestamp": "2024-06-13 09:34:08",
+              "userId": "user-id"
+            },
+            {
+              "id": "status-id",
+              "imageUrl": "https://storage.googleapis.com/sobat-tani-project-425607.appspot.com/status-image/c1b58a6c-a71f-42c8-90c1-43900eaaabed.jpg",
+              "jenis_penyakit": "Berikan tanaman nutrisi yang cukup untuk meningkatkan sistem kekebalan tanaman terhadap penyakit. Namun, hindari pemupukan yang berlebihan karena dapat membuat tanaman lebih rentan terhadap serangan penyakit.",
+              "nama_tanaman": "Rekomendasi obat Penyakit Garis-Garis Coklat (Brown Streak Disease)",
+              "timestamp": "2024-06-08 17:53:42",
+              "userId": "user-id"
+            }
+          ],
+          "items": {
+            "$ref": "#/definitions/inline_response_200_9_data"
+          }
+        },
+        "message": {
+          "type": "string",
+          "example": "Succecss"
+        }
+      }
+    },
+    "inline_response_404": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Bookmark tidak ditemukan!"
+        }
+      }
+    },
+    "inline_response_200_5": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "example": [
+            {
+              "id": "bookmark-id",
+              "imageUrl": "https://storage.googleapis.com/sobat-tani-project-425607.appspot.com/bookmark-image/90733aed-a089-4778-8e97-94b666d754bf.jpg",
+              "jenis_penyakit": "jenis penyakit",
+              "nama_tanaman": "nama Tanaman 2",
+              "timestamp": "2024-06-13 16:19:29",
+              "userId": "user-id"
+            },
+            {
+              "id": "bookmark-id",
+              "imageUrl": "https://storage.googleapis.com/sobat-tani-project-425607.appspot.com/bookmark-image/c836a365-3f16-4ccc-9335-2657ede14c73.jpg",
+              "jenis_penyakit": "jenis penyakit",
+              "nama_tanaman": "nama Tanaman",
+              "timestamp": "2024-06-13 16:11:53",
+              "userId": "user-id"
+            }
+          ],
+          "items": {
+            "$ref": "#/definitions/inline_response_200_5_data"
+          }
+        },
+        "message": {
+          "type": "string",
+          "example": "Succecss"
+        }
+      }
+    },
+    "inline_response_200_6": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Bookmark berhasil dihapus"
+        }
+      }
+    },
+    "inline_response_200_7": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/inline_response_200_7_data"
+        },
+        "message": {
+          "type": "string",
+          "example": "Success"
+        }
+      }
+    },
+    "inline_response_200_8_cara_pengobatan": {
+      "type": "object",
+      "properties": {
+        "0": {
+          "type": "string",
+          "example": "Penggunaan Bakterisida: Aplikasi bakterisida berbasis tembaga seperti tembaga oksiklorida dapat mengurangi infeksi bakteri."
+        },
+        "1": {
+          "type": "string",
+          "example": "Sanitasi Lapangan: Menghapus dan membakar bagian tanaman yang terinfeksi untuk mencegah penyebaran."
+        },
+        "2": {
+          "type": "string",
+          "example": "Penggunaan Benih Bebas Penyakit: Menanam benih yang telah disertifikasi bebas dari bakteri."
+        }
+      }
+    },
+    "inline_response_200_8": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "type": "array",
+          "example": [
+            {
+              "cara_pengobatan": {
+                "0": "Penggunaan Bakterisida: Aplikasi bakterisida berbasis tembaga seperti tembaga oksiklorida dapat mengurangi infeksi bakteri.",
+                "1": "Sanitasi Lapangan: Menghapus dan membakar bagian tanaman yang terinfeksi untuk mencegah penyebaran.",
+                "2": "Penggunaan Benih Bebas Penyakit: Menanam benih yang telah disertifikasi bebas dari bakteri."
+              },
+              "cara_pengobatan_alami": {
+                "0": "Penyemprotan Ekstrak Bawang Putih: Bawang putih memiliki sifat antibakteri yang dapat membantu mengurangi populasi bakteri.",
+                "1": "Penanaman Varietas Tahan: Memilih varietas singkong yang lebih tahan terhadap hawar bakteri."
+              },
+              "ciri_ciri": {
+                "0": "Daun menguning dan menggulung.",
+                "1": "Bercak coklat pada daun yang bisa menyebar ke batang.",
+                "2": "Luka pada batang yang mengeluarkan lendir bakteri."
+              },
+              "deskripsi": "Penyakit hawar bakteri pada singkong disebabkan oleh bakteri Xanthomonas axonopodis pv. manihotis. Penyakit ini menyebabkan kerusakan pada daun, batang, dan akar singkong, mengakibatkan daun menguning dan menggulung, serta munculnya bercak-bercak coklat pada daun.",
+              "id": "plants-id",
+              "jenis_penyakit": "Hawar Bakteri",
+              "nama_tanaman": "Singkong"
+            }
+          ],
+          "items": {
+            "$ref": "#/definitions/inline_response_200_8_data"
+          }
+        },
+        "message": {
+          "type": "string",
+          "example": "Success"
+        }
+      }
+    },
+    "inline_response_200_9_data": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "status-id"
+        },
+        "imageUrl": {
+          "type": "string",
+          "example": "https://storage.googleapis.com/sobat-tani-project-425607.appspot.com/status-image/0c5c5013-129a-45fb-a863-f65707693297.jpg"
+        },
+        "jenis_penyakit": {
+          "type": "string",
+          "example": "Berikan tanaman nutrisi yang cukup untuk meningkatkan sistem kekebalan tanaman terhadap penyakit. Namun, hindari pemupukan yang berlebihan karena dapat membuat tanaman lebih rentan terhadap serangan penyakit."
+        },
+        "nama_tanaman": {
+          "type": "string",
+          "example": "Rekomendasi obat Penyakit Garis-Garis Coklat (Brown Streak Disease)"
+        },
+        "timestamp": {
+          "type": "string",
+          "example": "2024-06-08 17:34:03"
+        },
+        "userId": {
+          "type": "string",
+          "example": "user-id"
+        }
+      }
+    },
+    "inline_response_200_8_cara_pengobatan_alami": {
+      "type": "object",
+      "properties": {
+        "0": {
+          "type": "string",
+          "example": "Penyemprotan Ekstrak Bawang Putih: Bawang putih memiliki sifat antibakteri yang dapat membantu mengurangi populasi bakteri."
+        },
+        "1": {
+          "type": "string",
+          "example": "Penanaman Varietas Tahan: Memilih varietas singkong yang lebih tahan terhadap hawar bakteri."
+        }
+      }
+    },
+    "inline_response_200_data": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "sobattani1@gmail.com"
+        },
+        "name": {
+          "type": "string",
+          "example": " C241-PS007"
+        },
+        "uid": {
+          "type": "string",
+          "example": "user-id"
+        }
+      }
+    },
+    "inline_response_200_3_data": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "sobattani1@gmail.com"
+        },
+        "name": {
+          "type": "string",
+          "example": " C241-PS007new"
+        },
+        "uid": {
+          "type": "string",
+          "example": "user-id"
+        }
+      }
+    },
+    "inline_response_200_1": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/inline_response_200_1_data"
+        },
+        "message": {
+          "type": "string",
+          "example": "Success"
+        },
+        "token": {
+          "type": "string",
+          "example": "jwt-token"
+        }
+      }
+    },
+    "inline_response_200_2": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "type": "string",
+          "example": "Success"
+        }
+      }
+    },
+    "inline_response_201_data": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "example": "bookmark-id"
+        },
+        "imageUrl": {
+          "type": "string",
+          "example": "https://storage.googleapis.com/sobat-tani-project-425607.appspot.com/bookmark-image/c836a365-3f16-4ccc-9335-2657ede14c73.jpg"
+        },
+        "jenis_penyakit": {
+          "type": "string",
+          "example": "jenis penyakit"
+        },
+        "nama_tanaman": {
+          "type": "string",
+          "example": "nama Tanaman"
+        },
+        "timestamp": {
+          "type": "object",
+          "properties": {}
+        },
+        "userId": {
+          "type": "string",
+          "example": "user-id"
+        }
+      }
+    },
+    "inline_response_201_1": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/inline_response_201_1_data"
+        },
+        "message": {
+          "type": "string",
+          "example": "Success"
+        }
+      }
+    },
+    "inline_response_200_3": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/inline_response_200_3_data"
+        },
+        "message": {
+          "type": "string",
+          "example": "success"
+        }
+      }
+    },
+    "inline_response_200_4": {
+      "type": "object",
+      "properties": {
+        "data": {
+          "$ref": "#/definitions/inline_response_200_3_data"
+        },
+        "message": {
+          "type": "string",
+          "example": "Success"
+        }
+      }
+    }
+  }
+}
